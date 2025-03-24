@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella con Flexbox</title>
+    <style>
+        .flex-table {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .flex-row {
+            display: flex;
+            width: 100%;
+            border-top: 1px solid #ccc;
+        }
+
+        .flex-row.header {
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
+
+        .flex-cell {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            border-left: 1px solid #ccc;
+        }
+
+        .flex-row:first-child {
+            border-top: none; /* Rimuove il bordo superiore dalla prima riga */
+        }
+
+        .flex-cell:first-child {
+            border-left: none; /* Rimuove il bordo sinistro dalla prima cella */
+        }
+    </style>
+</head>
+<body>
+
+<div class="flex-table">
+    <div class="flex-row header">
+        <div class="flex-cell">NAVBAR</div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-cell">TITOLO</div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-cell">BIO</div>
+        <div class="flex-cell">CAROSELLO</div>
+        <div class="flex-cell">ESPERIENZE</div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-cell">Inglese B1</div>
+        <div class="flex-cell">creare un pulsante like unlike, creare una pagina che cambia testo e colore ecc...</div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-cell">Contatti: samuel@mail.com</div>
+    </div>
+</div>
+
+</body>
+</html>
