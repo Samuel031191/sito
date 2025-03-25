@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella con Flexbox e Carosello</title>
+    <style>
+        .flex-table {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .flex-row {
+            display: flex;
+            width: 100%;
+            border-top: 1px solid #ccc;
+        }
+
+        .flex-row.header {
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
+
+        .flex-cell {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            border-left: 1px solid #ccc;
+        }
+
+        .flex-cell:first-child {
+            border-left: none; /* Remove left border for first column */
+        }
+
+        .carosello {
+            background-color: #eaeaea;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .carousel-button.prev {
+            left: 10px;
+        }
+
+        .carousel-button.next {
+            right: 10px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+    
+        .card-button {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .card-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="flex-table">
+    <div class="flex-row header">
+        <div class="flex-cell">NAVBAR</div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-cell">TITOLO</div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-cell">BIO</div>
+        <div class="flex-cell carosello">
+            <div class="carousel-container">
+                <div class="carousel-images">
+                    <img src="https://via.placeholder.com/300x200?text=Immagine+1" alt="Immagine 1">
+                    <img src="https://via.placeholder.com/300x200?text=Immagine+2" alt="Immagine 2">
+                    <img src="https://via.placeholder.com/300x200?text=Immagine+3" alt="Immagine 3">
+                </div>
+                <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+        </div>
+        <div class="flex-cell">ESPERIENZE</div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-cell card">
+            <div class="flex-card">
+            <img src="https://via.placeholder.com/300x180" alt="Immagine Card">
+            <div class="card-content">
+                <div class="card-title">Titolo della Card</div>
+                <div class="card-text">Questa è una descrizione della card. Aggiungi qui un semplice testo di esempio.</div>
+                <a href="#" class="card-button">Scopri di più</a>
+            </div>
+        <div class="flex-row">
+        <div class="flex-cell card">
+            <div class="flex-card">
+            <img src="https://via.placeholder.com/300x180" alt="Immagine Card">
+            <div class="card-content">
+                <div class="card-title">Titolo della Card</div>
+                <div class="card-text">Questa è una descrizione della card. Aggiungi qui un semplice testo di esempio.</div>
+                <a href="#" class="card-button">Scopri di più</a>
+            </div>
+    <div class="flex-row">
+        <div class="flex-cell card">
+            <div class="flex-card">
+            <img src="https://via.placeholder.com/300x180" alt="Immagine Card">
+            <div class="card-content">
+                <div class="card-title">Titolo della Card</div>
+                <div class="card-text">Questa è una descrizione della card. Aggiungi qui un semplice testo di esempio.</div>
+                <a href="#" class="card-button">Scopri di più</a>
+            </div>
+</div>
+
+<script>
+    let currentIndex = 0;
+
+    function moveSlide(step) {
+        const slides = document.querySelectorAll('.carousel-images img');
+        const totalSlides = slides.length;
+        currentIndex = (currentIndex + step + totalSlides) % totalSlides; // Ensure the index wraps around
+
+        const carouselImages = document.querySelector('.carousel-images');
+        carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+</script>
+
+</body>
+</html>

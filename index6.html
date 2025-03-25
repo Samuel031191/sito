@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella con Flexbox e Carosello</title>
+    <style>
+        /* Impostazioni di base */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .flex-table {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            overflow: hidden;
+            gap: 30px; /* Aggiungi spazio tra le righe */
+        }
+
+        .flex-row {
+            display: flex;
+            width: 100%;
+            border-top: 1px solid #ccc;
+            gap: 20px; /* Aggiungi spazio tra le celle in una riga */
+        }
+
+        .flex-row.header {
+            font-weight: bold;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+        }
+
+        .flex-cell {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            border-left: 1px solid #ccc;
+            background-color: #f9f9f9;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .flex-cell:first-child {
+            border-left: none; /* Rimuove il bordo sinistro della prima colonna */
+        }
+
+        .flex-cell:hover {
+            background-color: #eaeaea; /* Cambia colore al passaggio del mouse */
+        }
+
+        .carosello {
+            background-color: #eaeaea;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .carousel-button.prev {
+            left: 10px;
+        }
+
+        .carousel-button.next {
+            right: 10px;
+        }
+
+        /* Aggiungi margini per separare le righe */
+        .flex-row {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="flex-table">
+    <!-- Riga 1: Navbar -->
+    <div class="flex-row header">
+        <div class="flex-cell">NAVBAR</div>
+    </div>
+
+    <!-- Riga 2: Titolo -->
+    <div class="flex-row">
+        <div class="flex-cell">TITOLO</div>
+    </div>
+
+    <!-- Riga 3: BIO e Carosello -->
+    <div class="flex-row">
+        <div class="flex-cell">BIO</div>
+        <div class="flex-cell carosello">
+            <div class="carousel-container">
+                <div class="carousel-images">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Ginger_european_cat.jpg/330px-Ginger_european_cat.jpg" alt="Immagine 1">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Wildschwein%2C_N%C3%A4he_Pulverstampftor.jpg/330px-Wildschwein%2C_N%C3%A4he_Pulverstampftor.jpg" alt="Immagine 2">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Bufo_bufo_2015_G3.jpg/330px-Bufo_bufo_2015_G3.jpg" alt="Immagine 3">
+                </div>
+                <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+        </div>
+        <div class="flex-cell">ESPERIENZE</div>
+    </div>
+
+    <!-- Riga 4: Contenuti esperienze -->
+    <div class="flex-row">
+        <div class="flex-cell">Inglese B1</div>
+        <div class="flex-cell">Creare un pulsante like/unlike, creare una pagina che cambia testo e colore, ecc...</div>
+    </div>
+
+    <!-- Riga 5: Contatti -->
+    <div class="flex-row">
+        <div class="flex-cell">Contatti: samuel@mail.com</div>
+    </div>
+</div>
+
+<script>
+    let currentIndex = 0;
+
+    function moveSlide(step) {
+        const slides = document.querySelectorAll('.carousel-images img');
+        const totalSlides = slides.length;
+        currentIndex = (currentIndex + step + totalSlides) % totalSlides; // Ensure the index wraps around
+
+        const carouselImages = document.querySelector('.carousel-images');
+        carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // Imposta l'auto-scorrimento del carosello ogni 3 secondi
+    setInterval(() => {
+        moveSlide(1); // Sposta il carosello a sinistra automaticamente
+    }, 3000); // Ogni 3 secondi
+</script>
+
+</body>
+</html>

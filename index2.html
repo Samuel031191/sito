@@ -31,52 +31,9 @@
             border-left: 1px solid #ccc;
         }
 
-        .flex-row:first-child {
-            border-top: none; /* Rimuove il bordo superiore dalla prima riga */
-        }
+        
 
-        .flex-cell:first-child {
-            border-left: none; /* Rimuove il bordo sinistro dalla prima cella */
-        }
-
-        /* Carosello di immagini */
-        .carousel {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .carousel-images {
-            display: flex;
-            overflow: hidden;
-        }
-
-        .carousel-image {
-            min-width: 100%;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-buttons {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-        }
-
-        .carousel-button {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        .carousel-button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
+       
     </style>
 </head>
 <body>
@@ -90,19 +47,7 @@
     </div>
     <div class="flex-row">
         <div class="flex-cell">BIO</div>
-        <div class="flex-cell">
-            <div class="carousel">
-                <div class="carousel-images">
-                    <img class="carousel-image" src="https://via.placeholder.com/400x200?text=Immagine+1" >
-                    <img class="carousel-image" src="https://via.placeholder.com/400x200?text=Immagine+2" >
-                    <img class="carousel-image" src="https://via.placeholder.com/400x200?text=Immagine+3" >
-                </div>
-                <div class="carousel-buttons">
-                    <button class="carousel-button" id="prevBtn">&#10094;</button>
-                    <button class="carousel-button" id="nextBtn">&#10095;</button>
-                </div>
-            </div>
-        </div>
+        <div class="flex-cell">carosello
         </div>
         <div class="flex-cell">ESPERIENZE</div>
     </div>
@@ -114,35 +59,7 @@
         <div class="flex-cell">Contatti: samuel@mail.com</div>
     </div>
 
-<script>
-    let currentIndex = 0;
 
-    // Funzione per spostarsi alle immagini
-    function showImage(index) {
-        const images = document.querySelectorAll('.carousel-image');
-        if (index >= images.length) {
-            currentIndex = 0;
-        } else if (index < 0) {
-            currentIndex = images.length - 1;
-        } else {
-            currentIndex = index;
-        }
-        const offset = -currentIndex * 100;
-        document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
-    }
-
-    // Aggiungi gli eventi per i pulsanti
-    document.getElementById('prevBtn').addEventListener('click', () => {
-        showImage(currentIndex - 1);
-    });
-
-    document.getElementById('nextBtn').addEventListener('click', () => {
-        showImage(currentIndex + 1);
-    });
-
-    // Avvia il carosello
-    showImage(currentIndex);
-</script>
 
 </body>
 </html>

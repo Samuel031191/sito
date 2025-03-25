@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella con Flexbox e Carosello</title>
+    <style>
+        .flex-table {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .flex-row {
+            display: flex;
+            width: 100%;
+            border-top: 1px solid #ccc;
+        }
+
+        .flex-row.header {
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
+
+        .flex-cell {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            border-left: 1px solid #ccc;
+        }
+
+        .flex-cell:first-child {
+            border-left: none; /* Remove left border for first column */
+        }
+
+        .carosello {
+            background-color: #eaeaea;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px; /* Responsive: aumento della larghezza massima */
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .carousel-button.prev {
+            left: 10px;
+        }
+
+        .carousel-button.next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="flex-table">
+    <div class="flex-row header">
+        <div class="flex-cell">NAVBAR</div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-cell">TITOLO</div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-cell">BIO</div>
+        <div class="flex-cell carosello">
+            <div class="carousel-container">
+                <div class="carousel-images">
+                    <img src="https://via.placeholder.com/400x200?text=Immagine+1" alt="Descrizione Immagine 1">
+                    <img src="https://via.placeholder.com/400x200?text=Immagine+2" alt="Descrizione Immagine 2">
+                    <img src="https://via.placeholder.com/400x200?text=Immagine+3" alt="Descrizione Immagine 3">
+                </div>
+            </div>
+        </div>
+        <div class="flex-cell">ESPERIENZE</div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-cell">Inglese B1</div>
+        <div class="flex-cell">Creare un pulsante like/unlike, creare una pagina che cambia testo e colore, ecc...</div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-cell">Contatti: samuel@mail.com</div>
+    </div>
+</div>
+
+<script>
+    let currentIndex = 0;
+
+    function moveSlide(step) {
+        const slides = document.querySelectorAll('.carousel-images img');
+        const totalSlides = slides.length;
+        currentIndex = (currentIndex + step + totalSlides) % totalSlides; // Ensure the index wraps around
+
+        const carouselImages = document.querySelector('.carousel-images');
+        carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // Imposta l'auto-scorrimento del carosello ogni 3 secondi
+    setInterval(() => {
+        moveSlide(1); // Sposta il carosello a sinistra automaticamente
+    }, 3000); // Ogni 3 secondi
+
+</script>
+
+</body>
+</html>
