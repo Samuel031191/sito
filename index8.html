@@ -10,7 +10,39 @@
             font-family: Arial, sans-serif;
             background-color: #f7f7f7;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+        }
+
+        /* Stile per la Navbar */
+        .navbar {
+            background-color: #4CAF50;
+            display: flex; /* Allinea gli elementi in una riga */
+            justify-content: center; /* Centra gli elementi orizzontalmente */
+            overflow: hidden;
+        }
+
+        .navbar a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Navbar per dispositivi mobili (responsive) */
+        @media screen and (max-width: 600px) {
+            .navbar {
+                flex-direction: column; /* Per dispositivi piccoli, disporre gli elementi verticalmente */
+            }
+
+            .navbar a {
+                width: 100%; /* Ogni link prende tutta la larghezza */
+            }
         }
 
         .flex-table {
@@ -21,14 +53,14 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background-color: #fff;
             overflow: hidden;
-            gap: 30px; /* Aggiungi spazio tra le righe */
+            gap: 30px;
         }
 
         .flex-row {
             display: flex;
             width: 100%;
             border-top: 1px solid #ccc;
-            gap: 20px; /* Aggiungi spazio tra le celle in una riga */
+            gap: 20px;
         }
 
         .flex-row.header {
@@ -50,11 +82,11 @@
         }
 
         .flex-cell:first-child {
-            border-left: none; /* Rimuove il bordo sinistro della prima colonna */
+            border-left: none;
         }
 
         .flex-cell:hover {
-            background-color: #eaeaea; /* Cambia colore al passaggio del mouse */
+            background-color: #eaeaea;
         }
 
         .carosello {
@@ -104,7 +136,6 @@
             right: 10px;
         }
 
-        /* Aggiungi margini per separare le righe */
         .flex-row {
             margin-bottom: 20px;
         }
@@ -112,23 +143,30 @@
 </head>
 <body>
 
+<!-- Navbar -->
+<div class="navbar">
+    <a href="#carousel">Carosello</a>
+    <a href="#about">Chi Sono</a>
+    <a href="#skills">Competenze</a>
+    <a href="#contact">Contatti</a>
+    <a href="#language">Lingue</a>
+    <a href="#experiences">Esperienze</a>
+</div>
+
 <div class="flex-table">
-    <!-- Riga 1: Navbar -->
-    <div class="flex-row header">
-        <div class="flex-cell">NAVBAR</div>
-    </div>
+    
 
     <!-- Riga 2: Titolo -->
-    <div class="flex-row">
+    <div class="flex-row" id="home">
         <div class="flex-cell">TITOLO</div>
     </div>
 
     <!-- Riga 3: BIO e Carosello -->
-    <div class="flex-row">
-        <div class="flex-cell">Mi chiamo Samuel e mi piacciono molto gli animali</div>
+    <div class="flex-row" >
+        <div class="flex-cell"id="about" >Mi chiamo Samuel e mi piacciono molto gli animali</div>
         <div class="flex-cell carousel">
             <div class="carousel-container">
-                <div class="carousel-images">
+                <div class="carousel-images" id="carousel">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Ginger_european_cat.jpg/330px-Ginger_european_cat.jpg" alt="Immagine 1">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Wildschwein%2C_N%C3%A4he_Pulverstampftor.jpg/330px-Wildschwein%2C_N%C3%A4he_Pulverstampftor.jpg" alt="Immagine 2">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Bufo_bufo_2015_G3.jpg/330px-Bufo_bufo_2015_G3.jpg" alt="Immagine 3">
@@ -137,17 +175,17 @@
                 <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
             </div>
         </div>
-        <div class="flex-cell">Le mie esperienze lavorative sono: soccoritore, giardiniere e autista di furgoni</div>
+        <div class="flex-cell" id="experiences">Le mie esperienze lavorative sono: soccoritore, giardiniere e autista di furgoni</div>
     </div>
 
     <!-- Riga 4: Contenuti esperienze -->
-    <div class="flex-row">
-        <div class="flex-cell">Inglese B1</div>
-        <div class="flex-cell">Creare un pulsante like/unlike, creare una pagina che cambia testo e colore, ecc...</div>
+    <div class="flex-row" >
+        <div class="flex-cell" id="language">Inglese B1</div>
+        <div class="flex-cell" id="skills">Creare un pulsante like/unlike, creare una pagina che cambia testo e colore, ecc...</div>
     </div>
 
     <!-- Riga 5: Contatti -->
-    <div class="flex-row">
+    <div class="flex-row" id="contact">
         <div class="flex-cell">Contatti: samuel@mail.com</div>
     </div>
 </div>
@@ -158,16 +196,15 @@
     function moveSlide(step) {
         const slides = document.querySelectorAll('.carousel-images img');
         const totalSlides = slides.length;
-        currentIndex = (currentIndex + step + totalSlides) % totalSlides; // Ensure the index wraps around
+        currentIndex = (currentIndex + step + totalSlides) % totalSlides;
 
         const carouselImages = document.querySelector('.carousel-images');
         carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
 
-    // Imposta l'auto-scorrimento del carosello ogni 3 secondi
     setInterval(() => {
-        moveSlide(1); // Sposta il carosello a sinistra automaticamente
-    }, 3000); // Ogni 3 secondi
+        moveSlide(1);
+    }, 3000);
 </script>
 
 </body>
