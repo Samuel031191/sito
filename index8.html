@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +17,10 @@
         /* Stile per la Navbar */
         .navbar {
             background-color: darkgreen;
-            display: flex; /* Allinea gli elementi in una riga */
-            justify-content: center; /* Centra gli elementi orizzontalmente */
+            display: flex;
+            /* Allinea gli elementi in una riga */
+            justify-content: center;
+            /* Centra gli elementi orizzontalmente */
             overflow: hidden;
         }
 
@@ -37,11 +40,13 @@
         /* Navbar per dispositivi mobili (responsive) */
         @media screen and (max-width: 600px) {
             .navbar {
-                flex-direction: column; /* Per dispositivi piccoli, disporre gli elementi verticalmente */
+                flex-direction: column;
+                /* Per dispositivi piccoli, disporre gli elementi verticalmente */
             }
 
             .navbar a {
-                width: 100%; /* Ogni link prende tutta la larghezza */
+                width: 100%;
+                /* Ogni link prende tutta la larghezza */
             }
         }
 
@@ -50,9 +55,9 @@
             flex-direction: column;
             width: 100%;
             border-radius: 0px;
-            
+
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            
+
             background-color: greenyellow;
             overflow: hidden;
             gap: 30px;
@@ -61,7 +66,7 @@
         .flex-row {
             display: flex;
             width: 100%;
-            border-top: 1px  #ccc;
+            border-top: 1px #ccc;
             gap: 20px;
         }
 
@@ -76,7 +81,7 @@
             flex: 1;
             padding: 20px;
             text-align: center;
-            
+
             background-color: #f9f9f9;
             box-sizing: border-box;
             transition: background-color 0.3s ease;
@@ -146,71 +151,78 @@
         }
     </style>
 </head>
+
 <body>
 
-<!-- Navbar -->
-<div class="navbar">
-    <a href="#carousel">Carosello</a>
-    <a href="#about">Bio</a>
-    <a href="#skills">Competenze</a>
-    <a href="#contact">Contatti</a>
-    <a href="#language">Lingue</a>
-    <a href="#experiences">Esperienze</a>
-</div>
-
-<div class="flex-table">
-    
-
-    <!-- Riga 2: Titolo -->
-    <div class="flex-row" id="home">
-        <div class="flex-cell">TITOLO</div>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="#carousel">Carosello</a>
+        <a href="#about">Bio</a>
+        <a href="#skills">Competenze</a>
+        <a href="#contact">Contatti</a>
+        <a href="#language">Lingue</a>
+        <a href="#experiences">Esperienze</a>
     </div>
 
-    <!-- Riga 3: BIO e Carosello -->
-    <div class="flex-row" >
-        <div class="flex-cell"id="about" >Mi chiamo Samuel e mi piacciono molto gli animali</div>
-        <div class="flex-cell carousel">
-            <div class="carousel-container">
-                <div class="carousel-images" id="carousel">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Ginger_european_cat.jpg/330px-Ginger_european_cat.jpg" alt="Immagine 1">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Wildschwein%2C_N%C3%A4he_Pulverstampftor.jpg/330px-Wildschwein%2C_N%C3%A4he_Pulverstampftor.jpg" alt="Immagine 2">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Bufo_bufo_2015_G3.jpg/330px-Bufo_bufo_2015_G3.jpg" alt="Immagine 3">
-                </div>
-                <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
-                <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
-            </div>
+    <div class="flex-table">
+
+
+        <!-- Riga 2: Titolo -->
+        <div class="flex-row" id="home">
+            <div class="flex-cell">TITOLO</div>
         </div>
-        <div class="flex-cell" id="experiences">Le mie esperienze lavorative sono: soccoritore, giardiniere e autista di furgoni</div>
+
+        <!-- Riga 3: BIO e Carosello -->
+        <div class="flex-row">
+            <div class="flex-cell" id="about">Mi chiamo Samuel e mi piacciono molto gli animali</div>
+            <div class="flex-cell carousel">
+                <div class="carousel-container">
+                    <div class="carousel-images" id="carousel">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Ginger_european_cat.jpg/330px-Ginger_european_cat.jpg"
+                            alt="Immagine 1">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Wildschwein%2C_N%C3%A4he_Pulverstampftor.jpg/330px-Wildschwein%2C_N%C3%A4he_Pulverstampftor.jpg"
+                            alt="Immagine 2">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Bufo_bufo_2015_G3.jpg/330px-Bufo_bufo_2015_G3.jpg"
+                            alt="Immagine 3">
+                    </div>
+                    <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+                    <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+                </div>
+            </div>
+            <div class="flex-cell" id="experiences">Le mie esperienze lavorative sono: soccoritore, giardiniere e
+                autista di furgoni</div>
+        </div>
+
+        <!-- Riga 4: Contenuti esperienze -->
+        <div class="flex-row">
+            <div class="flex-cell" id="language">Inglese B1</div>
+            <div class="flex-cell" id="skills">Creare un pulsante like/unlike, creare una pagina che cambia testo e
+                colore, ecc...</div>
+        </div>
+
+        <!-- Riga 5: Contatti -->
+        <div class="flex-row" id="contact">
+            <div class="flex-cell">Contatti: samuel@mail.com</div>
+        </div>
     </div>
 
-    <!-- Riga 4: Contenuti esperienze -->
-    <div class="flex-row" >
-        <div class="flex-cell" id="language">Inglese B1</div>
-        <div class="flex-cell" id="skills">Creare un pulsante like/unlike, creare una pagina che cambia testo e colore, ecc...</div>
-    </div>
+    <script>
+        let currentIndex = 0;
 
-    <!-- Riga 5: Contatti -->
-    <div class="flex-row" id="contact">
-        <div class="flex-cell">Contatti: samuel@mail.com</div>
-    </div>
-</div>
+        function moveSlide(step) {
+            const slides = document.querySelectorAll('.carousel-images img');
+            const totalSlides = slides.length;
+            currentIndex = (currentIndex + step + totalSlides) % totalSlides;
 
-<script>
-    let currentIndex = 0;
+            const carouselImages = document.querySelector('.carousel-images');
+            carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
 
-    function moveSlide(step) {
-        const slides = document.querySelectorAll('.carousel-images img');
-        const totalSlides = slides.length;
-        currentIndex = (currentIndex + step + totalSlides) % totalSlides;
-
-        const carouselImages = document.querySelector('.carousel-images');
-        carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-
-    setInterval(() => {
-        moveSlide(1);
-    }, 3000);
-</script>
+        setInterval(() => {
+            moveSlide(1);
+        }, 3000);
+    </script>
 
 </body>
+
 </html>
